@@ -18,7 +18,6 @@ import { TheaterComedy } from '@mui/icons-material';
 
 //API resources
 export const API_KEY = "63dae85e"
-9
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',

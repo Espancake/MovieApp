@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import React, { createContext, useState } from 'react';
 //components
 import Navbar from './components/Navbar';
@@ -8,8 +9,13 @@ const Layout = ({children}) => {
 
     const [movieList, updateMovieList] = useState([]);
 
+    const LayoutBox = styled.div`
+        margin: 0;
+        padding: 0;
+    `
+
     return (
-            <React.Fragment>
+            <LayoutBox>
                 <Navbar handleData={updateMovieList} />
                 {movieList ? (
                         <DataContext.Provider value={movieList}>
@@ -18,7 +24,7 @@ const Layout = ({children}) => {
                     ) : (
                         <p>Loading data...</p>
                 )}
-            </React.Fragment>
+            </LayoutBox>
     );
 }
 

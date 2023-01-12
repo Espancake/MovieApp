@@ -4,6 +4,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom'
 // Components
 import MovieList from './components/MovieListContainer.jsx';
 import Layout from './Layout';
+import MovieInfo from './components/MovieInfo'
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
         <Layout>
           <Routes>
             <Route exact path="/" element={<MovieList/>}/>
+            <Route exact path="/movieinfo/:id" element={<MovieInfo/>}/>
           </Routes>
         </Layout>
       </BrowserRouter>

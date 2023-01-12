@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -10,10 +12,21 @@ export default function MediaCard(props) {
 
 
     const { Title, Year, imdbID, Type, Poster } = props.movie;
+    const navigate = useNavigate();
+    const [state, setState] = useState(false)
+
+    useEffect(()=>{
+      {state? 
+      navigate(`/movieinfo/${Title}`, {state:props.movie}):
+      console.log('empty data')
+      
+      }
+    })
+
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, height:"581.11px" }}>
       <CardMedia
-        sx={{ height: 140 }}
+        sx={{ height: 362, objectFit:"cover" }}
         image={Poster}
       />
       <CardContent>
@@ -31,8 +44,7 @@ export default function MediaCard(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+            <Button onClick={setState(true)} size="small">More Info</Button>
       </CardActions>
     </Card>
   );
