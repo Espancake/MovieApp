@@ -1,6 +1,6 @@
 //react resources
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 //http axios resources
 import axios from 'axios';

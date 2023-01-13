@@ -14,14 +14,14 @@ const gradient = keyframes`
 `
 
 const BackgroundContainer = styled.div `
-        position: fixed;
+        position: relative;
         z-index: 0;
         width: 100vw;
         height: 100vh;
         margin: auto;
         font-family: -apple-system, BlinkMacSystemFont, sans-serif;
         overflow: auto;
-        background: linear-gradient(315deg, rgba(101,0,94,1) 3%, rgba(60,132,206,1) 38%, rgba(48,238,226,1) 68%, rgba(255,25,25,1) 98%);
+        background: linear-gradient(315deg, rgba(101,0,94,1) 3%, rgba(60,132,206,1) 38%, rgba(48,238,226,1) 68%, #be19ff 98%);
         animation: ${gradient} 15s ease infinite;
         background-size: 400% 400%;
         background-attachment:fixed;
