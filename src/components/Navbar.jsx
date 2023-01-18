@@ -1,6 +1,7 @@
 //react resources
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 //http axios resources
 import axios from 'axios';
@@ -8,16 +9,21 @@ import axios from 'axios';
 //Material-UI
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { TheaterComedy } from '@mui/icons-material';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
+//Componrntd
+
+import LoginAvatar from './LoginAvatar';
+import LoginRequest from './LoginRequest'
 //API resources
 export const API_KEY = "63dae85e"
+
+
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -61,11 +67,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const SearchAppBar=({handleData})=> {
+const SearchAppBar=({handleData, currentLocation, handleLocation})=> {
 
     const [searchQuery, updateSearchQuery] = useState("");
     const [timeoutId, updateTimeoutId] = useState();
+    const [isOnline, setIsOnline] = useState(false)
 
+    const location = useLocation();
+    const navigate = useNavigate();
 
     const fetchData = async (searchString)=>{
       const response = await axios.get(
@@ -77,14 +86,19 @@ const SearchAppBar=({handleData})=> {
     const onTextChange = (e) =>{
       clearTimeout(timeoutId)
       updateSearchQuery(e.target.value);
-      const timeout = setTimeout(()=> fetchData(e.target.value),500);
+      const timeout = setTimeout(async()=>{
+        handleLocation(location.pathname)
+        await fetchData(e.target.value)
+        currentLocation==="/"?handleLocation(null):navigate("/")
+      },500);
+      
       updateTimeoutId(timeout)
     };
 
 
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1}}>
       <AppBar position="static">
         <Toolbar
         sx={{display:'flex',
@@ -102,6 +116,7 @@ const SearchAppBar=({handleData})=> {
               onChange={onTextChange}
             />
           </Search>
+          {!isOnline?<LoginRequest/>:<LoginAvatar/>}
         </Toolbar>
       </AppBar>
     </Box>

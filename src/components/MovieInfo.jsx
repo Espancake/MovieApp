@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import styled from 'styled-components';
+import {ThreeDots} from 'react-loader-spinner'
 import { Button } from '@mui/material';
 import { API_KEY } from './Navbar';
 
@@ -9,7 +10,6 @@ import { API_KEY } from './Navbar';
 const MovieInfo = () => {
 const location = useLocation();
 const movieId = location.state;
-console.log(movieId)
 
 const MovieInfoContainer = styled.div`
   border: 1px solid red;
@@ -27,7 +27,9 @@ const CoverImage = styled.img`
 `
 
 const InfoContainer = styled.div`
+  background-color: #ffffff8d;
   border: 1px solid blue;
+  border-radius: 15px;
 `
 
 const MovieTitle = styled.h1`
@@ -67,6 +69,17 @@ const MovieInfo = styled.span`
 
   `
 
+  const LoadingContainer = styled.div`
+    grid-column: 1 /3;
+    grid-row: 1/3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75.4vh;
+    width: 100%;
+  `;
+
+
 const navigate = useNavigate()
 const [movieInfo, setMovieInfo] = useState();
 
@@ -75,9 +88,9 @@ const GoBack =()=>{
 }
 
 useEffect(()=>{
-  Axios.get(
-    `https://www.omdbapi.com/?i=${movieId}&apikey=${API_KEY}`
-  ).then((response)=> setMovieInfo(response.data)).then(()=>{console.log(movieInfo)});
+    Axios.get(
+      `https://www.omdbapi.com/?i=${movieId}&apikey=${API_KEY}`
+    ).then((response)=> setMovieInfo(response.data)).then(()=>{console.log(movieInfo)});
 }, [])
 
   return (
@@ -133,7 +146,14 @@ useEffect(()=>{
         </ButtonsContainer>
         </>
       ):(
-        "Loading..."
+        <LoadingContainer>
+            <ThreeDots
+            color="#1976D2"
+            size={50}
+            height={200}
+            width={200}
+            />
+        </LoadingContainer>
       )}
       
 
