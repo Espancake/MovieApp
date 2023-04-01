@@ -3,21 +3,22 @@ import { useState } from 'react';
 import { TextField, Box } from '@mui/material'
 import styled from 'styled-components';
 
-const FormInput = (props) => {
-
     const Error = styled.span `
         color: red;
         width: 200px;
     `
 
 
+
+const FormInput = (props) => {
+
     
-    const {name, label, errorMessage, onChange, pattern, id, ...inputprops} = props;
+    const {label, errorMessage, onChange, pattern, id, ...inputprops} = props;
 
     const [isValid, setIsValid] = useState(true);
 
-    const handleBlur = (e) => {
-      setIsValid(e.target.checkValidity() && (!pattern || new RegExp(pattern).test(e.target.value)));
+    const handleBlur = (event) => {
+      setIsValid(event.target.checkValidity() && (!pattern || new RegExp(pattern).test(event.target.value)));
     };
   
     return (
@@ -32,9 +33,8 @@ const FormInput = (props) => {
         <TextField
           required
           {...inputprops}
-          id={"outlined-required" && "id"}
+          id={`outlined-required-${id}`}
           label={label}
-          name={name}
           onBlur={handleBlur}
           onChange={onChange}
           sx={{

@@ -4,15 +4,13 @@ import FormInput from './FormInput'
 import styled from 'styled-components';
 
 
-const Register = () => {
-
-
   const RegisterForm = styled.form`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   `
+const Register = () => {
 
   const [values, setValues] = useState({
     username:"",
@@ -100,7 +98,7 @@ const Register = () => {
                 </Box>
 
                       <Button 
-                      type='submit' 
+                      type="submit"
                       variant="contained" 
                       size="small" 
                       color="primary"
