@@ -25,7 +25,7 @@ const Register = () => {
       name:"username",
       type:"text",
       placeholder:"Username",
-      errorMessage:"Username should be 3-16 characters and shouldnt include any special character",
+      errorMessage:"Username should be 3-16 characters.",
       label:"Username",
       pattern:"^[A-Za-z0-9]{3,16}$",
       required: true,
@@ -35,7 +35,7 @@ const Register = () => {
       name:"email",
       type:"email",
       placeholder:"Email",
-      errorMessage:"it should be a valid email address!",
+      errorMessage:"it should be a valid email address.",
       label:"Email",
       required: true,
     },
@@ -44,7 +44,7 @@ const Register = () => {
       name:"password",
       type:"password",
       placeholder:"Password",
-      errorMessage:"Password should be 8-20 characters and at least 1 letter, 1 number and 1 special character ",
+      errorMessage:"Password should be 8-20 characters and at least 1 letter, 1 number and 1 special character. ",
       label:"Password",
       pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
       required: true,
@@ -54,7 +54,7 @@ const Register = () => {
       name:"confirmPassword",
       type:"password",
       placeholder:"Confirm Password",
-      errorMessage:"Passwords dont match",
+      errorMessage:"Passwords dont match remember that should have 8-20 characters and other special characters.",
       label:"Confirm Password",
       pattern:values.password,
       required: true,
@@ -76,10 +76,13 @@ const Register = () => {
         <Box 
                     component="form"
                     sx={{
-                        display:'flex',
+                        display:'grid',
+                        gridTemplate: "repeat(2, 1fr) / repeat(2, 1fr)",
+                        gap:"10px",
                         justifyContent:'center',
                         alignItems:'center',
-                        flexDirection:'column',
+                        height:"auto",
+                        width:"auto",
                         '& .MuiTextField-root': { m: 1, width: '32ch' },
                     }}
                 >
@@ -102,6 +105,9 @@ const Register = () => {
                       variant="contained" 
                       size="small" 
                       color="primary"
+                      sx={{
+                        marginTop:"50px"
+                      }}
                       >
                       Register
                       </Button>

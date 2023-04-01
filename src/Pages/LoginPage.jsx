@@ -31,11 +31,11 @@ const LoginPage =()=> {
   return (
     <LoginContainer>
         <Card sx={{ 
-            width: '345px',
+            width: 'auto',
             height:'auto',
             padding:'10px',
             borderRadius:'15px',
-            opacity:0.75,
+            opacity:0.85,
             
             }}>
             <CardMedia sx={{

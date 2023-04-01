@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
     const Error = styled.span `
         color: red;
-        width: 200px;
+        width: 256px;
     `
 
 
