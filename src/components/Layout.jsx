@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import React, { createContext, useState } from 'react';
 //components
-import Navbar from './components/Navbar';
-import NotFound from './components/NotFound'
-import Stars from './images/stars.svg'
+import Navbar from './Navbar';
+import NotFound from './NotFound'
+import Stars from '../images/stars.svg'
 
 export const DataContext = createContext({});
 const Layout = ({children}) => {

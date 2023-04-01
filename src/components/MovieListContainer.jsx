@@ -2,7 +2,7 @@ import React, {useContext} from 'react'
 import styled, {keyframes} from 'styled-components';
 import Movies from './MoviesComponent';
 import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
-import { DataContext } from '../Layout';
+import { DataContext } from './Layout';
 //import Background from './Background'
 
 

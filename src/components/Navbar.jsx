@@ -1,7 +1,7 @@
 //react resources
 import * as React from 'react';
 import { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 //http axios resources
 import axios from 'axios';
@@ -103,8 +103,12 @@ const SearchAppBar=({handleData, currentLocation, handleLocation})=> {
         <Toolbar
         sx={{display:'flex',
              justifyContent:'space-between',  
-      }}>
-          <TheaterComedy sx={{fontSize:'60px', display:'block'}}/>
+      }}>  
+          <span>
+            <Link to={'/'} style={{ textDecoration: 'none', color: 'inherit' }}>
+              <TheaterComedy sx={{fontSize:'60px', display:'block'}}/>
+            </Link>
+          </span>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />

@@ -3,10 +3,10 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom'
 
 // Components
 import MovieList from './components/MovieListContainer.jsx';
-import Layout from './Layout';
+import Layout from './components/Layout';
 import MovieInfo from './components/MovieInfo';
 import NotFound from './components/NotFound';
-import Login from './Pages/Login';
+import Login from './Pages/LoginPage';
 
 const App = () => {
   return (
